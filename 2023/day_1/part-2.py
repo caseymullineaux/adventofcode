@@ -1,26 +1,27 @@
-# Your calculation isn't quite right. It looks like some of the digits are 
-# actually spelled out with letters: one, two, three, four, five, six, seven, 
-#eight, and nine also count as valid "digits".
+# Your calculation isn't quite right. It looks like some of the digits are
+# actually spelled out with letters: one, two, three, four, five, six, seven,
+# eight, and nine also count as valid "digits".
 
-with open("2023/day_1/input_part_2.txt", "r") as f:
+with open("2023/day_1/input2.txt", "r") as f:
     lines = f.readlines()
 
 
 def insert_text_digits(line):
     text_digit = [
-    ("one", "1"),
-    ("two", "2"),
-    ("three", "3"),
-    ("four", "4"),
-    ("five", "5"),
-    ("six", "6"),
-    ("seven", "7"),
-    ("eight", "8"),
-    ("nine", "9"),
-]
+        ("one", "1"),
+        ("two", "2"),
+        ("three", "3"),
+        ("four", "4"),
+        ("five", "5"),
+        ("six", "6"),
+        ("seven", "7"),
+        ("eight", "8"),
+        ("nine", "9"),
+    ]
     for text, digit in text_digit:
         line = line.replace(text, f"{text}{digit}")
     return line
+
 
 numbers = []
 for line in lines:
@@ -42,4 +43,3 @@ for line in lines:
 
 total = sum(numbers)
 print(f"total: {total}")
-
