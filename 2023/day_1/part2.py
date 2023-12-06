@@ -2,9 +2,6 @@
 # actually spelled out with letters: one, two, three, four, five, six, seven,
 # eight, and nine also count as valid "digits".
 
-with open("2023/day_1/input2.txt", "r") as f:
-    lines = f.readlines()
-
 
 def insert_text_digits(line):
     text_digit = [
@@ -23,23 +20,16 @@ def insert_text_digits(line):
     return line
 
 
-numbers = []
-for line in lines:
-    first_digit = None
-    last_digit = None
-
+total = 0
+line_num = 1
+for line in open("input2.txt"):
     line = insert_text_digits(line)
-    for char in line:
-        if char.isdigit():
-            if first_digit is None:
-                first_digit = char
-            else:
-                last_digit = char
-    if last_digit is None:
-        last_digit = first_digit
-    number = int(first_digit + last_digit)
-    print(f"{line}: {number}")
-    numbers.append(number)
+    digits = [ch for ch in line if ch.isdigit()]
+    
+    line_total = int(digits[0] + digits[-1])
+    print(f"{line_num}: {digits} = {line_total}")
+    
+    total += line_total
+    line_num += 1
 
-total = sum(numbers)
-print(f"total: {total}")
+print(total)
